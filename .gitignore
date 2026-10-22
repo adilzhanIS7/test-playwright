@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Playwright output (regenerated on every run)
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+
+# Environment and secrets
+.env
+.env.*
+
+# Logs (run logs used as evidence live in screenshots/run-results/logs/ and ARE committed)
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp

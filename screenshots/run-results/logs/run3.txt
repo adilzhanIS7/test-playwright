@@ -1,0 +1,127 @@
+
+Running 26 tests using 4 workers
+
+  ✓   1 [chromium] › tests\auth.spec.ts:32:7 › Suite 1 — Authentication › TC-AUTH-04 Login with empty fields (3.7s)
+  ✓   3 [chromium] › tests\auth.spec.ts:17:7 › Suite 1 — Authentication › TC-AUTH-02 Login with wrong password (4.9s)
+  ✓   4 [chromium] › tests\auth.spec.ts:25:7 › Suite 1 — Authentication › TC-AUTH-03 Login with non-registered email (5.2s)
+  ✓   7 [chromium] › tests\cart.spec.ts:21:7 › Suite 4 — Product Details & Cart › TC-CART-02 Add product to cart (4.7s)
+  ✓   6 [chromium] › tests\cart.spec.ts:5:7 › Suite 4 — Product Details & Cart › TC-CART-01 Open product details (5.3s)
+  ✓   2 [chromium] › tests\auth.spec.ts:9:7 › Suite 1 — Authentication › TC-AUTH-01 Login with valid credentials (10.2s)
+  ✓   5 [chromium] › tests\auth.spec.ts:40:7 › Suite 1 — Authentication › TC-AUTH-05 Logout (7.5s)
+  ✓  10 [chromium] › tests\cart.spec.ts:64:7 › Suite 4 — Product Details & Cart › TC-CART-05 Remove product from cart (45.7s)
+  ✓   9 [chromium] › tests\cart.spec.ts:47:7 › Suite 4 — Product Details & Cart › TC-CART-04 Update quantity in cart (48.8s)
+  ✓   8 [chromium] › tests\cart.spec.ts:30:7 › Suite 4 — Product Details & Cart › TC-CART-03 Add product with quantity 2 (49.1s)
+  ✘  11 [chromium] › tests\cart.spec.ts:77:7 › Suite 4 — Product Details & Cart › TC-CART-06 Cart total for multiple products (49.3s)
+  ✓  12 [chromium] › tests\checkout.spec.ts:23:7 › Suite 5 — Checkout › TC-CHK-01 Complete checkout as a logged-in user (Cash on Delivery) (1.3m)
+  ✓  14 [chromium] › tests\checkout.spec.ts:66:7 › Suite 5 — Checkout › TC-CHK-03 Payment cannot be submitted without a payment method (1.2m)
+  ✓  13 [chromium] › tests\checkout.spec.ts:45:7 › Suite 5 — Checkout › TC-CHK-02 Order appears in "My invoices" (1.2m)
+  ✘  15 [chromium] › tests\cart.spec.ts:77:7 › Suite 4 — Product Details & Cart › TC-CART-06 Cart total for multiple products (retry #1) (1.2m)
+  ✓  17 [chromium] › tests\register.spec.ts:20:7 › Suite 2 — Registration › TC-REG-02 Submit empty registration form (18.8s)
+  ✓  16 [chromium] › tests\checkout.spec.ts:77:7 › Suite 5 — Checkout › TC-CHK-04 Anonymous user is asked to sign in or continue as guest (21.5s)
+  ✓  19 [chromium] › tests\register.spec.ts:43:7 › Suite 2 — Registration › TC-REG-03 Register with an already used email (17.6s)
+  ✓  18 [chromium] › tests\register.spec.ts:9:7 › Suite 2 — Registration › TC-REG-01 Register a new customer with valid data (22.1s)
+  ✓  21 [chromium] › tests\register.spec.ts:57:7 › Suite 2 — Registration › TC-REG-05 Password shorter than 6 characters (7.3s)
+  ✓  20 [chromium] › tests\register.spec.ts:50:7 › Suite 2 — Registration › TC-REG-04 Invalid email format (10.2s)
+  ✓  23 [chromium] › tests\search.spec.ts:22:7 › Suite 3 — Product Search & Filter › TC-SRCH-02 Search with no results (8.1s)
+  ✓  22 [chromium] › tests\search.spec.ts:9:7 › Suite 3 — Product Search & Filter › TC-SRCH-01 Search by keyword (8.4s)
+  ✓  24 [chromium] › tests\search.spec.ts:30:7 › Suite 3 — Product Search & Filter › TC-SRCH-03 Reset search (4.7s)
+  ✓  26 [chromium] › tests\search.spec.ts:53:7 › Suite 3 — Product Search & Filter › TC-SRCH-05 Sort by price Low → High (12.0s)
+  ✓  27 [chromium] › tests\search.spec.ts:64:7 › Suite 3 — Product Search & Filter › TC-SRCH-06 Sort by name A → Z (12.1s)
+  ✓  25 [chromium] › tests\search.spec.ts:42:7 › Suite 3 — Product Search & Filter › TC-SRCH-04 Filter by category (13.1s)
+
+
+  1) [chromium] › tests\cart.spec.ts:77:7 › Suite 4 — Product Details & Cart › TC-CART-06 Cart total for multiple products 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByTestId('add-to-cart')
+        - locator resolved to <button disabled id="btn-add-to-cart" data-test="add-to-cart" class="btn-success btn" _ngcontent-ng-c2605822289="">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        22 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+
+
+
+      39 |
+      40 |   async addToCart(): Promise<void> {
+    > 41 |     await this.addToCartButton.click();
+         |                                ^
+      42 |   }
+      43 | }
+      44 |
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByTestId('add-to-cart')
+        - locator resolved to <button disabled id="btn-add-to-cart" data-test="add-to-cart" class="btn-success btn" _ngcontent-ng-c2605822289="">…</button>
+      - attempting click action
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and stable
+          - element is not enabled
+        - retrying click action
+          - waiting 100ms
+        23 × waiting for element to be visible, enabled and stable
+           - element is not enabled
+         - retrying click action
+           - waiting 500ms
+
+
+
+      39 |
+      40 |   async addToCart(): Promise<void> {
+    > 41 |     await this.addToCartButton.click();
+         |                                ^
+      42 |   }
+      43 | }
+      44 |
+
+    attachment #1: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium-retry1\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium-retry1\error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium-retry1\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\cart-Suite-4-—-Product-Det-0816f-total-for-multiple-products-chromium-retry1\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests\cart.spec.ts:77:7 › Suite 4 — Product Details & Cart › TC-CART-06 Cart total for multiple products 
+  25 passed (3.0m)

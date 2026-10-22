@@ -1,0 +1,4 @@
+# Normalize line endings in the repo to LF (Windows checkouts still work)
+* text=auto eol=lf
+*.png binary
+*.jpg binary

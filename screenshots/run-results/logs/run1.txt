@@ -1,0 +1,266 @@
+
+Running 26 tests using 4 workers
+
+  ✓   4 [chromium] › tests\auth.spec.ts:32:7 › Suite 1 — Authentication › TC-AUTH-04 Login with empty fields (13.5s)
+  ✓   2 [chromium] › tests\auth.spec.ts:17:7 › Suite 1 — Authentication › TC-AUTH-02 Login with wrong password (14.6s)
+  ✓   3 [chromium] › tests\auth.spec.ts:25:7 › Suite 1 — Authentication › TC-AUTH-03 Login with non-registered email (15.3s)
+  ✓   1 [chromium] › tests\auth.spec.ts:9:7 › Suite 1 — Authentication › TC-AUTH-01 Login with valid credentials (15.5s)
+  ✓   7 [chromium] › tests\cart.spec.ts:21:7 › Suite 4 — Product Details & Cart › TC-CART-02 Add product to cart (13.2s)
+  ✓   6 [chromium] › tests\cart.spec.ts:5:7 › Suite 4 — Product Details & Cart › TC-CART-01 Open product details (13.9s)
+  ✓   8 [chromium] › tests\cart.spec.ts:30:7 › Suite 4 — Product Details & Cart › TC-CART-03 Add product with quantity 2 (13.3s)
+  ✓   5 [chromium] › tests\auth.spec.ts:40:7 › Suite 1 — Authentication › TC-AUTH-05 Logout (16.2s)
+  ✓  10 [chromium] › tests\cart.spec.ts:64:7 › Suite 4 — Product Details & Cart › TC-CART-05 Remove product from cart (48.0s)
+  ✓   9 [chromium] › tests\cart.spec.ts:47:7 › Suite 4 — Product Details & Cart › TC-CART-04 Update quantity in cart (48.8s)
+  ✓  11 [chromium] › tests\cart.spec.ts:77:7 › Suite 4 — Product Details & Cart › TC-CART-06 Cart total for multiple products (50.4s)
+  ✓  12 [chromium] › tests\checkout.spec.ts:23:7 › Suite 5 — Checkout › TC-CHK-01 Complete checkout as a logged-in user (Cash on Delivery) (50.3s)
+  ✓  15 [chromium] › tests\checkout.spec.ts:77:7 › Suite 5 — Checkout › TC-CHK-04 Anonymous user is asked to sign in or continue as guest (34.4s)
+  ✓  16 [chromium] › tests\register.spec.ts:9:7 › Suite 2 — Registration › TC-REG-01 Register a new customer with valid data (40.0s)
+  ✓  17 [chromium] › tests\register.spec.ts:20:7 › Suite 2 — Registration › TC-REG-02 Submit empty registration form (8.5s)
+  ✓  13 [chromium] › tests\checkout.spec.ts:45:7 › Suite 5 — Checkout › TC-CHK-02 Order appears in "My invoices" (45.8s)
+  ✓  19 [chromium] › tests\register.spec.ts:50:7 › Suite 2 — Registration › TC-REG-04 Invalid email format (4.7s)
+  ✓  18 [chromium] › tests\register.spec.ts:43:7 › Suite 2 — Registration › TC-REG-03 Register with an already used email (7.4s)
+  ✓  20 [chromium] › tests\register.spec.ts:57:7 › Suite 2 — Registration › TC-REG-05 Password shorter than 6 characters (8.3s)
+  ✘  14 [chromium] › tests\checkout.spec.ts:66:7 › Suite 5 — Checkout › TC-CHK-03 Payment cannot be submitted without a payment method (50.5s)
+  ✘  22 [chromium] › tests\search.spec.ts:22:7 › Suite 3 — Product Search & Filter › TC-SRCH-02 Search with no results (19.7s)
+  ✘  21 [chromium] › tests\search.spec.ts:9:7 › Suite 3 — Product Search & Filter › TC-SRCH-01 Search by keyword (22.2s)
+  ✘  23 [chromium] › tests\search.spec.ts:30:7 › Suite 3 — Product Search & Filter › TC-SRCH-03 Reset search (20.9s)
+  ✘  24 [chromium] › tests\search.spec.ts:42:7 › Suite 3 — Product Search & Filter › TC-SRCH-04 Filter by category (25.7s)
+  ✘  26 [chromium] › tests\search.spec.ts:64:7 › Suite 3 — Product Search & Filter › TC-SRCH-06 Sort by name A → Z (23.8s)
+  ✘  25 [chromium] › tests\search.spec.ts:53:7 › Suite 3 — Product Search & Filter › TC-SRCH-05 Sort by price Low → High (25.6s)
+
+
+  1) [chromium] › tests\checkout.spec.ts:66:7 › Suite 5 — Checkout › TC-CHK-03 Payment cannot be submitted without a payment method 
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByTestId('proceed-3')
+        - locator resolved to <button type="button" awnextstep="" data-test="proceed-3" class="btn btn-success">Proceed to checkout </button>
+      - attempting click action
+        - waiting for element to be visible, enabled and stable
+        - element is visible, enabled and stable
+        - scrolling into view if needed
+        - done scrolling
+        - performing click action
+
+
+      15 |   await checkoutPage.proceedFromSignIn.click(); // already logged in
+      16 |   await expect(checkoutPage.street).not.toHaveValue(''); // address is pre-filled from profile
+    > 17 |   await checkoutPage.proceedFromAddress.click();
+         |                                         ^
+      18 |   await expect(checkoutPage.paymentMethod).toBeVisible();
+      19 |   return price;
+      20 | }
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\checkout-Suite-5-—-Checkou-de179-ed-without-a-payment-method-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\checkout-Suite-5-—-Checkou-de179-ed-without-a-payment-method-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\checkout-Suite-5-—-Checkou-de179-ed-without-a-payment-method-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\checkout-Suite-5-—-Checkou-de179-ed-without-a-payment-method-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\checkout-Suite-5-—-Checkou-de179-ed-without-a-payment-method-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests\search.spec.ts:9:7 › Suite 3 — Product Search & Filter › TC-SRCH-01 Search by keyword 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-91a66-C-SRCH-01-Search-by-keyword-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-91a66-C-SRCH-01-Search-by-keyword-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-91a66-C-SRCH-01-Search-by-keyword-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-91a66-C-SRCH-01-Search-by-keyword-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-91a66-C-SRCH-01-Search-by-keyword-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › tests\search.spec.ts:22:7 › Suite 3 — Product Search & Filter › TC-SRCH-02 Search with no results 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-0cfae-H-02-Search-with-no-results-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-0cfae-H-02-Search-with-no-results-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-0cfae-H-02-Search-with-no-results-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-0cfae-H-02-Search-with-no-results-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-0cfae-H-02-Search-with-no-results-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › tests\search.spec.ts:30:7 › Suite 3 — Product Search & Filter › TC-SRCH-03 Reset search 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-2cf63-ter-TC-SRCH-03-Reset-search-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-2cf63-ter-TC-SRCH-03-Reset-search-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-2cf63-ter-TC-SRCH-03-Reset-search-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-2cf63-ter-TC-SRCH-03-Reset-search-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-2cf63-ter-TC-SRCH-03-Reset-search-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) [chromium] › tests\search.spec.ts:42:7 › Suite 3 — Product Search & Filter › TC-SRCH-04 Filter by category 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-6c53c--SRCH-04-Filter-by-category-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-6c53c--SRCH-04-Filter-by-category-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-6c53c--SRCH-04-Filter-by-category-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-6c53c--SRCH-04-Filter-by-category-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-6c53c--SRCH-04-Filter-by-category-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) [chromium] › tests\search.spec.ts:53:7 › Suite 3 — Product Search & Filter › TC-SRCH-05 Sort by price Low → High 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-a0d9f-05-Sort-by-price-Low-→-High-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-a0d9f-05-Sort-by-price-Low-→-High-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-a0d9f-05-Sort-by-price-Low-→-High-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-a0d9f-05-Sort-by-price-Low-→-High-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-a0d9f-05-Sort-by-price-Low-→-High-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) [chromium] › tests\search.spec.ts:64:7 › Suite 3 — Product Search & Filter › TC-SRCH-06 Sort by name A → Z 
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+
+      40 |    */
+      41 |   private async waitForProducts(action: () => Promise<void>, urlPart: string): Promise<Response> {
+    > 42 |     const response = this.page.waitForResponse(
+         |                                ^
+      43 |       (r) => r.url().includes('/products') && r.url().includes(urlPart) && r.request().method() === 'GET',
+      44 |     );
+      45 |     await action();
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-013ef--SRCH-06-Sort-by-name-A-→-Z-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-013ef--SRCH-06-Sort-by-name-A-→-Z-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\search-Suite-3-—-Product-S-013ef--SRCH-06-Sort-by-name-A-→-Z-chromium\error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\search-Suite-3-—-Product-S-013ef--SRCH-06-Sort-by-name-A-→-Z-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\search-Suite-3-—-Product-S-013ef--SRCH-06-Sort-by-name-A-→-Z-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7 failed
+    [chromium] › tests\checkout.spec.ts:66:7 › Suite 5 — Checkout › TC-CHK-03 Payment cannot be submitted without a payment method 
+    [chromium] › tests\search.spec.ts:9:7 › Suite 3 — Product Search & Filter › TC-SRCH-01 Search by keyword 
+    [chromium] › tests\search.spec.ts:22:7 › Suite 3 — Product Search & Filter › TC-SRCH-02 Search with no results 
+    [chromium] › tests\search.spec.ts:30:7 › Suite 3 — Product Search & Filter › TC-SRCH-03 Reset search 
+    [chromium] › tests\search.spec.ts:42:7 › Suite 3 — Product Search & Filter › TC-SRCH-04 Filter by category 
+    [chromium] › tests\search.spec.ts:53:7 › Suite 3 — Product Search & Filter › TC-SRCH-05 Sort by price Low → High 
+    [chromium] › tests\search.spec.ts:64:7 › Suite 3 — Product Search & Filter › TC-SRCH-06 Sort by name A → Z 
+  19 passed (3.0m)
