@@ -25,18 +25,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The cache action packs with Git's tar.exe, which spawns gzip from Git\usr\bin.
-      # That folder is not on the runner's PATH, so saving the npm cache failed
-      # ("Child returned status 127"). Only needed on the Windows self-hosted runner.
-      - name: Put Git's gzip on PATH for the npm cache
+      # Windows self-hosted runner only:
+      # 1. npm's default cache there is the machine's shared cache (several GB from every
+      #    project), and setup-node would upload all of it. Use a per-job folder instead,
+      #    so the cache holds only this project's packages, like on a GitHub-hosted runner.
+      # 2. The cache action packs with Git's tar.exe, which spawns gzip from Git\usr\bin;
+      #    that folder is not on the runner's PATH ("Child returned status 127").
+      - name: Prepare npm cache (Windows self-hosted runner)
         if: runner.os == 'Windows'
         shell: powershell
-        run: Add-Content -Path $env:GITHUB_PATH -Value 'C:\Program Files\Git\usr\bin'
+        run: |
+          Add-Content -Path $env:GITHUB_ENV -Value "npm_config_cache=$env:RUNNER_TEMP\npm-cache"
+          Add-Content -Path $env:GITHUB_PATH -Value 'C:\Program Files\Git\usr\bin'
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm                 # caches the npm cache dir, keyed on package-lock.json
+          cache: npm                 # caches npm's cache dir, keyed on package-lock.json + OS
 
       - name: Install dependencies
         run: npm ci
