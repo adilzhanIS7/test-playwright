@@ -2,7 +2,7 @@ import { APIRequestContext, expect } from '@playwright/test';
 import { User } from '../../models/User';
 
 /** Backend of the shop. The UI baseURL in the config points to the frontend only. */
-export const API_URL = 'https://api.practicesoftwaretesting.com';
+export const API_URL = process.env.API_URL || 'https://api.practicesoftwaretesting.com';
 
 /** Creates a customer through the REST API. Used for test data setup. */
 export async function registerUserViaApi(request: APIRequestContext, user: User): Promise<void> {
