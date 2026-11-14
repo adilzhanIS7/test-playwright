@@ -8,6 +8,12 @@ blob-report/
 playwright/.cache/
 playwright/.auth/
 
+# CI: JUnit output, merged shard reports, local act runs
+reports/
+all-blob-reports/
+.act-artifacts/
+.secrets
+
 # Environment and secrets
 .env
 .env.*

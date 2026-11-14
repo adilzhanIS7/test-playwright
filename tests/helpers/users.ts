@@ -1,7 +1,10 @@
 import { User } from '../../models/User';
 
-/** Meets the site's password rules (min 6 chars, letters + digits + symbols). */
-export const DEFAULT_PASSWORD = 'Str0ng!Pass#2026';
+/**
+ * Password for the throwaway users the tests register. Meets the site's rules
+ * (min 6 chars, letters + digits + symbols). Override with TEST_USER_PASSWORD.
+ */
+export const DEFAULT_PASSWORD = process.env.TEST_USER_PASSWORD || 'Str0ng!Pass#2026';
 
 /** Random lowercase letters. Names on the site must not contain digits. */
 function letters(length: number): string {
