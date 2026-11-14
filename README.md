@@ -76,10 +76,18 @@ reporters `list`, `blob`, `junit` (`reports/junit.xml`), `trace: 'on-first-retry
 
 | Configuration | Total run time | Run tests step (slowest shard) | Run |
 | --- | --- | --- | --- |
-| 1 job, no sharding | TODO | TODO | [run](TODO) |
-| 4 shards + merge | TODO | TODO | [run](TODO) |
+| 1 job, no sharding | **2m 1s** (2m 13s / 1m 53s / 2m 1s) | **53s** (53 / 48 / 59 s) | [run 43591499164](https://github.com/adilzhanIS7/test-playwright/actions/runs/43591499164), attempts 1–3 |
+| 4 shards + merge | **1m 41s** (2m 18s / 1m 39s / 1m 41s) | **29s** (41 / 29 / 27 s) | [run 43592264960](https://github.com/adilzhanIS7/test-playwright/actions/runs/43592264960), attempts 2–4 |
 
-Median of 3 runs via workflow_dispatch. Conclusion: TODO
+Median of 3 runs of the same commit, started one at a time with **Re-run all jobs** (nothing else
+running on the runners). For the 4-shard row attempt 1 is left out: it saved the npm cache for the
+first time and ran next to the pull-request run. In attempts 2–4 the npm cache was restored in all 4 shards.
+
+**Conclusion:** sharding cut the test step from 53 s to 29 s (−45 %), but the whole run only from
+2m 1s to 1m 41s (−17 %): every shard still spends the same ~40–60 s on checkout, Node setup, `npm ci`
+and the browser check, the extra `merge-reports` job adds ~15–20 s, and all 4 shards share one PC and
+the same remote site, so 4 shards are not 4× faster. With 26 tests that take under a minute, sharding
+gives a modest gain; it pays off more as the suite grows.
 
 ### Running locally
 
