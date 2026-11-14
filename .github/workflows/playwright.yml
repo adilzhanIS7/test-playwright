@@ -20,15 +20,23 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: [1]   # TEMP: "before" timing run (1 job, no sharding); restore [1, 2, 3, 4]
+        shardTotal: [1]   # TEMP: restore [4]
     steps:
       - uses: actions/checkout@v4
+
+      # The cache action packs with Git's tar.exe, which spawns gzip from Git\usr\bin.
+      # That folder is not on the runner's PATH, so saving the npm cache failed
+      # ("Child returned status 127"). Only needed on the Windows self-hosted runner.
+      - name: Put Git's gzip on PATH for the npm cache
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: Add-Content -Path $env:GITHUB_PATH -Value 'C:\Program Files\Git\usr\bin'
 
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm                 # caches ~/.npm keyed on package-lock.json
+          cache: npm                 # caches the npm cache dir, keyed on package-lock.json
 
       - name: Install dependencies
         run: npm ci
