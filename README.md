@@ -47,15 +47,21 @@ npm run report                    # open the HTML report
 **CI system:** GitHub Actions. The repository already lives on GitHub, so it needs no server of its
 own, is free for public repositories and supports matrices for sharding.
 
+**Runner:** the test shards run on a **self-hosted runner** (Windows PC, 4 runner instances so the
+4 shards run in parallel). On GitHub-hosted `ubuntu-latest` runners practicesoftwaretesting.com
+shows a bot-check page ("…verifies you are not a bot") instead of the app to data-centre IPs, so every
+test that logs in failed there, retries included (seen in `error-context.md` of the first CI run).
+The `merge-reports` job does not open the site and stays on `ubuntu-latest`.
+
 **Pipeline** (`.github/workflows/playwright.yml`):
 - runs on every push and pull request (plus manual `workflow_dispatch` for timing runs);
 - `npm ci` with the npm cache (`actions/setup-node`, `cache: npm`), Chromium installed with system dependencies;
 - the full Playwright suite split into 4 shards (`--shard=i/4`) running in parallel, no `--grep` / `--project` filters;
 - the `merge-reports` job merges the shards' blob reports into one HTML report and one JUnit file;
-- artefacts: `playwright-report` (HTML), `test-results-N` (traces, screenshots, videos, JUnit), `junit-report`; kept for 14 days.
+- artefacts: `playwright-report` (HTML), `test-results-N` (traces, screenshots, JUnit), `junit-report`; kept for 14 days.
 
 **CI settings** (`playwright.config.ts`, when `CI=true`): `forbidOnly: true`, `retries: 2`, `workers: 2`,
-reporters `list`, `blob`, `junit` (`reports/junit.xml`), `trace: 'on-first-retry'`, `video: 'retain-on-failure'`.
+reporters `list`, `blob`, `junit` (`reports/junit.xml`), `trace: 'on-first-retry'` (video only on Linux runners).
 `merge.config.ts` builds the merged HTML report and `reports/junit-merged.xml`.
 
 **Configuration through environment** (all optional, defaults are in the code):

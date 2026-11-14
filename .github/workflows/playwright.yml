@@ -12,7 +12,10 @@ concurrency:
 jobs:
   test:
     name: Tests (shard ${{ matrix.shardIndex }}/${{ matrix.shardTotal }})
-    runs-on: ubuntu-latest
+    # Self-hosted runner: practicesoftwaretesting.com shows a bot-check page to
+    # GitHub-hosted (data-centre) IPs, so tests that log in fail on ubuntu-latest.
+    # 4 runners registered on one machine let the 4 shards run in parallel.
+    runs-on: self-hosted
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -64,7 +67,7 @@ jobs:
     name: Merge reports
     if: ${{ !cancelled() }}
     needs: [test]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest   # does not open the site, so a GitHub-hosted runner is fine
     steps:
       - uses: actions/checkout@v4
 

@@ -27,10 +27,10 @@ export default defineConfig({
     // CI: trace of exactly the retried attempt. Locally: keep the trace of every failed test.
     trace: isCI ? 'on-first-retry' : 'retain-on-failure',
     screenshot: 'only-on-failure',
-    // Video is off locally: 'retain-on-failure' still RECORDS every test, and encoding
-    // 4 parallel videos on Windows made context teardown take 25-56 s (tests timed out).
-    // The Linux runner with 2 workers handles it fine.
-    video: isCI ? 'retain-on-failure' : 'off',
+    // Video only in CI on Linux: 'retain-on-failure' still RECORDS every test, and encoding
+    // parallel videos on Windows made context teardown take 25-56 s (tests timed out).
+    // The self-hosted runner is a Windows machine, so there it stays off too.
+    video: isCI && process.platform === 'linux' ? 'retain-on-failure' : 'off',
     actionTimeout: 15_000,
     navigationTimeout: 30_000,
   },
